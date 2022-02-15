@@ -18,23 +18,53 @@
   <body>
     <div class="container">
       <div class="row">
-        <label>New Entry</label>
-        <div data-view="entry-form">
-          <form>
-            <label>Title</label>
-            <input type="text" required class="column-full" />
-
-            <label>Photo URL</label>
-            <input type="text" required class="column-full"/>
-
-            <label>Notes</label>
-            <textarea required class="column-half"></textarea>
-          </form>
+        <div class="column-full header">
+          <p>Code Journal</p>
         </div>
       </div>
-      <header></header>
-      <main></main>
-      <script src="js/data.js"></script>
-      <script src="js/main.js"></script>
+
+      <div class="column-half">
+        <h1>New Entry</h1>
+      </div>
+      <!-- form section start-->
+      <div data-view="entry-form">
+        <form class="form">
+          <input
+            type="image"
+            src="images/placeholder-image-square.jpg"
+            class="img"
+          />
+
+
+
+
+
+          <div class="column-half">
+            <label for="title" class="titles">Title</label>
+            <input type="text" required class="column-full"/>
+
+            <label for="text" class="titles">Photo URL</label>
+            <input type="text" required class="column-full"/>
+          </div>
+
+
+          <div class="column-half">
+            <div>
+              <label for="notes" class="titles">Notes</label>
+            </div>
+            <textarea class="column-half textbox" required></textarea>
+          </div>
+
+          <div class="column-half">
+            <button class="save">SAVE</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <header></header>
+    <main></main>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
