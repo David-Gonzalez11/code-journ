@@ -19,7 +19,7 @@ function handleSubmit(event) {
     notes: notes,
     nextEntryId: data.nextEntryId
   };
-
+  img.reset('images/placeholder-image-square.jpg');
   data.nextEntryId++;
   data.entries.unshift(Entry);
 }
