@@ -50,7 +50,7 @@ p {
 }
 
 .textbox:focus {
-  border-color: rgb(86 43 128);
+  border-color: rgb(95 58 138);
   border-width: 4px;
 }
 
