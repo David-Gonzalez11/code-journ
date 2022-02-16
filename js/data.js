@@ -16,6 +16,5 @@ window.addEventListener('beforeunload', handlewindows);
 function handlewindows(event) {
   var newObj = JSON.stringify(data);
   localStorage.setItem('code-journal', newObj);
-  document.querySelector('img').reset();
-  document.querySelector('form').reset();
+
 }
