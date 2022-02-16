@@ -29,7 +29,13 @@
       <div data-view="entry-form">
         <form class="form">
           <div class="row">
-            <img src="images/placeholder-image-square.jpg">
+            <div class="column-half img">
+              <img src="images/placeholder-image-square.jpg">
+            </div>
+          </div>
+
+
+          <div class="row">
 
             <div class="column-half">
               <label for="title" class="titles">Title</label>
@@ -39,18 +45,17 @@
               <input id="photoUrl" type="text" required class="column-full box" name="photoUrl" />
             </div>
           </div>
-          <div class="row">
-            <div class="column-half">
-              <div>
-                <label for="notes" class="titles">Notes</label>
-                <textarea class="column-full textbox" required name="notes"></textarea>
-              </div>
-            </div>
-          </div>
+      </div>
+      <div class="column-half">
+        <div>
+          <label for="notes" class="titles">Notes</label>
+          <textarea class="column-full textbox" required name="notes"></textarea>
+        </div>
+      </div>
 
-          <div class="column-half btn">
-            <button type="submit" class="save">SAVE</button>
-          </div>
+      <div class="column-half btn">
+        <button type="submit" class="save">SAVE</button>
+      </div>
       </div>
 
     </main>
