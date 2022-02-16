@@ -1,0 +1,84 @@
+.save {
+  background-color: purple;
+  color: white;
+  padding: 6px;
+  justify-content: right;
+  border-radius: 5px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.column-full {
+  border-radius: 5px;
+  margin-top: 1rem;
+  border-color: grey;
+}
+
+img {
+  width: 40%;
+}
+
+.titles {
+  font-weight: 600;
+}
+
+.header {
+  background-color: rgb(86 43 128);
+  color: white;
+  border-radius: 2px;
+  padding-top: 1rem;
+  margin: 0;
+}
+
+.head {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+p {
+  font-size: 20px;
+}
+
+.textbox {
+  width: 100%;
+  border-radius: 5px;
+  padding: 5rem;
+}
+
+h1 {
+  margin-top: 3px;
+}
+
+.column-half {
+  margin-top: 1rem;
+}
+
+.box {
+  border-color: grey;
+}
+
+input {
+  padding: 1rem;
+}
+
+.btn {
+  text-align: right;
+  padding-top: 4px;
+  width: 100%;
+  display: inline-block;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 900px;
+  }
+
+  .column-full,
+  .column-half {
+    padding: 0 0.75rem;
+  }
+
+  .column-half {
+    width: 50%;
+  }
+}
