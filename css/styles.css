@@ -85,17 +85,28 @@ body {
 .newbtn {
   color: white;
   background-color: rgb(95, 58, 138);
-  margin-left: 15rem;
   border-radius: 5px;
-  padding-top: 0.3rem;
-  padding-bottom: 0.3rem;
-  padding-left: 0.6rem;
-  padding-right: 0.6rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   text-align: right;
+  justify-content: right;
+  text-decoration: none;
+  margin-right: 0;
+  float: right;
 }
 
-/* li{
-} */
+li {
+  list-style: none;
+}
+
+.nav {
+  padding-top: 1.5rem;
+  padding-left: 1rem;
+  color: white;
+  text-decoration: none;
+}
 
 /* .link{
   position: relative;
@@ -103,3 +114,13 @@ body {
   left: 9rem;
   color: white;
 } */
+
+.view {
+  padding: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+div.container.new {
+  margin-top: 1rem;
+}

@@ -28,6 +28,7 @@ function handleSubmit(event) {
 save.addEventListener('submit', handleSubmit);
 
 function renderEntry(entry) {
+
   var firstDiv = document.createElement('div');
   firstDiv.setAttribute('class', 'row');
 
@@ -45,18 +46,43 @@ function renderEntry(entry) {
 
   var heading = document.createElement('h2');
   heading.textContent = entry.title;
+  // console.log(firstDiv);//
 
   firstDiv.appendChild(colHalfdiv);
   colHalfdiv.appendChild(image);
   colHalfdiv.appendChild(heading);
   colHalfdiv.appendChild(description);
   return firstDiv;
-
 }
-window.addEventListener('DOMcontentLoaded', renderEntry);
-var row = document.querySelector('entries');
+// everything seems fine up until this point so far i think
 
-for (var i = 0; i < data.entry.length; i++) {
+window.addEventListener('DOMcontentLoaded', renderEntry);
+var row = document.querySelector('#entries');
+
+// for loop for function
+for (var i = 0; i < data.entries.length; i++) {
   var entry = renderEntry(data.entries[i]);
   row.appendChild(entry);
+
 }
+
+// var tabcontainer = document.querySelector('.container-form');
+// console.log(tabcontainer);
+
+// var tabs = document.querySelector("div[data-view='entries']");
+// tabcontainer.addEventListener('click', handleClick);
+// function handleClick(event) {
+//   if (event.target.matches('.container-form')) {
+//     // for (var i = 0; i < data.entries.length; i++) {
+//     //   if (tabcontainer[i] === data.entries) {
+//     //     tabcontainer[i].className = 'tab active';
+//     //   } else {
+//     //     tabcontainer[i].className = 'tab';
+//     //   }
+//     // }
+//     tabcontainer.className = 'view';
+//   } else {
+//     tabs = event.target.getAttribute('data-view');
+//     tabs.className = 'hidden';
+//   }
+// }
