@@ -95,6 +95,7 @@ body {
   text-decoration: none;
   margin-right: 0;
   float: right;
+  margin-bottom: 2rem;
 }
 
 li {
@@ -108,17 +109,9 @@ li {
   text-decoration: none;
 }
 
-/* .link{
-  position: relative;
-  bottom: 3rem;
-  left: 9rem;
-  color: white;
-} */
-
 .view {
   padding: 1.5rem;
   display: flex;
-  align-items: flex-start;
 }
 
 div.container.new {
