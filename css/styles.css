@@ -81,3 +81,25 @@ input {
 body {
   background-color: rgb(240 240 240);
 }
+
+.newbtn {
+  color: white;
+  background-color: rgb(95, 58, 138);
+  margin-left: 15rem;
+  border-radius: 5px;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+  text-align: right;
+}
+
+/* li{
+} */
+
+/* .link{
+  position: relative;
+  bottom: 3rem;
+  left: 9rem;
+  color: white;
+} */
