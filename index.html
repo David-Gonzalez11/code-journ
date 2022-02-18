@@ -21,16 +21,17 @@
         <div class="column-full head">
           <header class="header row">
             <p>Code Journal</p>
+            <!-- anchor tag for the entries button-->
             <a href="#" class="nav">Entries</a>
           </header>
-          <h1 class="">New Entry</h1>
+          <h1>New Entry</h1>
         </div>
       </div>
     </div>
 
     <main>
       <form>
-        <div data-view="entry-form" class=" container container-form" id="new">
+        <div data-view="entry-form" class="container container-form" id="new">
           <div class="row">
             <div class="column-half img">
               <img src="images/placeholder-image-square.jpg" />
@@ -40,7 +41,6 @@
               <label for="title" class="titles">Title</label>
               <input
                   type="text"
-                  required
                   class="column-full box"
                   name="title"
                 />
@@ -49,7 +49,6 @@
               <input
                   id="photoUrl"
                   type="text"
-                  required
                   class="column-full box"
                   name="photoUrl"
                 />
@@ -62,13 +61,12 @@
             <label for="notes" class="titles">Notes</label>
             <textarea
               class="column-full textbox"
-              required
               name="notes"
             ></textarea>
           </div>
 
           <div class="column-full btn ">
-            <button type="submit" class="save">SAVE</button>
+            <button type="button" class="save">SAVE</button>
           </div>
         </div>
 
@@ -83,13 +81,14 @@
               <h1>Entries</h1>
             </div>
             <div class="column-half">
-              <button class="newbtn">NEW</button>
+              <!-- anchore tag for the new button-->
+              <a class="newbtn" href="#">NEW</a>
             </div>
           </div>
 
 
 
-          <ul>
+          <!-- <ul>
             <li>
               <div class="row">
                 <div class="column-half">
@@ -123,7 +122,7 @@
                 </div>
               </div>
             </li>
-          </ul>
+          </ul> -->
         </div>
 
       </div>

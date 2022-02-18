@@ -28,10 +28,6 @@ function handleSubmit(event) {
 save.addEventListener('submit', handleSubmit);
 
 function renderEntry(entry) {
-  // var container = document.createElement('div');
-  // container.setAttribute('class', 'container new');
-
-  // var unordered = document.createElement('UL');
 
   var list = document.createElement('LI');
 
@@ -40,6 +36,7 @@ function renderEntry(entry) {
 
   var colHalfdiv = document.createElement('div');
   colHalfdiv.setAttribute('class', 'column-half');
+
   var secondcolHalf = document.createElement('div');
   secondcolHalf.setAttribute('class', 'column-half');
 
@@ -49,24 +46,17 @@ function renderEntry(entry) {
   var image = document.createElement('img');
   image.setAttribute('src', entry.photo);
 
-  var name = document.createElement('div');
-  name.setAttribute('class', 'column-half');
-
   var heading = document.createElement('h2');
   heading.textContent = entry.title;
 
-  // container.appendChild(firstDiv);
-  // unordered.appendChild(list);
-
-  firstDiv.appendChild(list);
-  list.appendChild(colHalfdiv);
+  list.appendChild(firstDiv);
+  firstDiv.appendChild(colHalfdiv);
   colHalfdiv.appendChild(image);
-
   firstDiv.appendChild(secondcolHalf);
   secondcolHalf.appendChild(heading);
   secondcolHalf.appendChild(description);
 
-  return firstDiv;
+  return list;
 }
 // everything seems fine up until this point so far i think
 
@@ -80,22 +70,33 @@ for (var i = 0; i < data.entries.length; i++) {
 
 }
 
-var tabcontainer = document.querySelector('.container-form');
-
-var tabs = document.querySelector("div[data-view='entries']");
-tabcontainer.addEventListener('click', handleClick);
+var tabcontainer = document.querySelector('form');
+// var tabs = document.querySelector("div[data-view='entries']");
 function handleClick(event) {
+  event.preventDefault();
+  // console.log(event.target);
+
   if (event.target.matches('.container-form')) {
-    // for (var i = 0; i < data.entries.length; i++) {
-    //   if (tabcontainer[i] === data.entries) {
-    //     tabcontainer[i].className = 'tab active';
-    //   } else {
-    //     tabcontainer[i].className = 'tab';
-    //   }
-    // }
     tabcontainer.className = '';
   } else {
-    tabs = event.target.getAttribute("div['data-view=entry-form']");
-    tabs.className = 'hidden';
+    tabcontainer.className = 'hidden';
   }
 }
+tabcontainer.addEventListener('click', event => handleClick(event));
+// console.log(tabcontainer);
+//   if (event.target.matches('.container-form')) {
+
+//     tabcontainer.className = '';
+//   } else {
+//     tabs = event.target.getAttribute("div['data-view=entry-form']");
+//     tabs.className = 'hidden';
+//   }
+// }
+
+// // for (var i = 0; i < data.entries.length; i++) {
+// //   if (tabcontainer[i] === data.entries) {
+// //     tabcontainer[i].className = 'tab active';
+// //   } else {
+// //     tabcontainer[i].className = 'tab';
+// //   }
+// // }
