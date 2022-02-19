@@ -68,38 +68,48 @@ for (var i = 0; i < data.entries.length; i++) {
   row.appendChild(entry);
 
 }
-
+// whole entry form
 var tabcontainer = document.querySelector('form');
+
+// entries
 var tabs = document.querySelector('div[data-view="entries"]');
+
+// entry form
+// var entryForm = document.querySelector('div[data-view="entry-form"]');
+
 // var tabs = document.querySelector("div[data-view='entries']");
 function handleClick(event) {
   event.preventDefault();
   // console.log(event.target);
   // console.log(tabs);
 
+  // clicking save btn
   if (event.target.matches('form')) {
-    tabs.className = '';
+    tabs.classList.add('');
   } else {
-    tabcontainer.className = 'hidden';
+    tabcontainer.classList.add('.hidden');
   }
 }
 // this function above is for the save buton which takes you to entries
 
 tabcontainer.addEventListener('click', event => handleClick(event));
 
+// clicking entries btn
 function entries(event) {
   if (event.target.matches('div[data-view="entries"]')) {
-    tabs.className = 'hidden';
+    tabs.className.add('');
   } else {
-    tabs.className = '';
+    tabs.classList.add('.hidden');
   }
 
 }
 tabs.addEventListener('click', event => entries(event));
 
+// clickign new button
 var newBtn = document.querySelector('.newbtn');
 function forNew(event) {
-
+  tabs.classList.remove('.hidden');
+  tabcontainer.className = '';
 }
 newBtn.addEventListener('click', forNew);
 // this is for entries
