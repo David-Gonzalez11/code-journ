@@ -30,19 +30,6 @@ function handleSubmit(event) {
 
   tabcontainer.classList.add('hidden');
   tabs.className = ('');
-  // function handleClick(event) {
-  //   event.preventDefault();
-  //   // console.log(event.target);
-  //   // console.log(tabs);
-
-  //   // clicking save btn
-  //   if (event.target.matches('form')) {
-  //     tabs.classList.remove('hidden');
-  //   } else {
-  //     tabcontainer.classList.add('hidden');
-  //   }
-  // }
-
 }
 save.addEventListener('submit', handleSubmit);
 
@@ -76,38 +63,27 @@ function renderEntry(entry) {
 
   return list;
 }
-// everything seems fine up until this point so far i think
 
 window.addEventListener('DOMcontentLoaded', renderEntry);
 var row = document.querySelector('.new');
 
-// for loop for function
 for (var i = 0; i < data.entries.length; i++) {
   var entry = renderEntry(data.entries[i]);
   row.appendChild(entry);
 
 }
 
-// whole entry form
 var tabcontainer = document.querySelector('form');
 
-// entries
-
-// entry form
 var entryForm = document.querySelector('div[data-view="entry-form"]');
 
-// // this function above works//
-// // this function above is for the save buton which takes you to entries
-// tabcontainer.addEventListener('click', event => handleClick(event));
-
-// clicking new btn
 function entries(event) {
   if (event.target.matches('div[data-view="entries"]')) {
     entryForm.classList = '';
   } else {
     tabs.classList.add('hidden');
     tabcontainer.classList.remove('hidden');
-  }// this works ///////////////////
+  }
 }
 tabs.addEventListener('click', event => entries(event));
 
@@ -121,15 +97,3 @@ function entryButton(event) {
 }
 var entrada = document.querySelector('.nav');
 entrada.addEventListener('click', entryButton);
-
-// clickign new button
-// var newBtn = document.querySelector('.newbtn');
-// function forNew(event) {
-//   if (event.target.matches('div[data-view="entry-form"]')) {
-//     tabs.className = 'hidden';
-//   } else {
-//     tabcontainer = '';
-//   }
-
-// }
-// newBtn.addEventListener('click', forNew);
