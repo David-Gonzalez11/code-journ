@@ -68,6 +68,7 @@ for (var i = 0; i < data.entries.length; i++) {
   row.appendChild(entry);
 
 }
+
 // whole entry form
 var tabcontainer = document.querySelector('form');
 
@@ -75,7 +76,7 @@ var tabcontainer = document.querySelector('form');
 var tabs = document.querySelector('div[data-view="entries"]');
 
 // entry form
-// var entryForm = document.querySelector('div[data-view="entry-form"]');
+var entryForm = document.querySelector('div[data-view="entry-form"]');
 
 // var tabs = document.querySelector("div[data-view='entries']");
 function handleClick(event) {
@@ -85,56 +86,44 @@ function handleClick(event) {
 
   // clicking save btn
   if (event.target.matches('form')) {
-    tabs.classList.add('');
+    tabs.classList.remove('hidden');
   } else {
-    tabcontainer.classList.add('.hidden');
+    tabcontainer.classList.add('hidden');
   }
 }
+// this function above works//
 // this function above is for the save buton which takes you to entries
-
 tabcontainer.addEventListener('click', event => handleClick(event));
 
-// clicking entries btn
+// clicking new btn
 function entries(event) {
   if (event.target.matches('div[data-view="entries"]')) {
-    tabs.className.add('');
+    entryForm.classList = '';
   } else {
-    tabs.classList.add('.hidden');
-  }
-
+    tabs.classList.add('hidden');
+    tabcontainer.classList.remove('hidden');
+  }// this works ///////////////////
 }
 tabs.addEventListener('click', event => entries(event));
 
-// clickign new button
-var newBtn = document.querySelector('.newbtn');
-function forNew(event) {
-  tabs.classList.remove('.hidden');
-  tabcontainer.className = '';
+function entryButton(event) {
+  if (event.target.matches('nav')) {
+    tabcontainer.classList.add('.hidden');
+  } else {
+    entrada = '';
+  }
 }
-newBtn.addEventListener('click', forNew);
-// this is for entries
+var entrada = document.querySelector('.nav');
+entrada.addEventListener('click', entryButton);
 
-// console.log(tabcontainer);
-//   if (event.target.matches('.container-form')) {
-
-//     tabcontainer.className = '';
+// clickign new button
+// var newBtn = document.querySelector('.newbtn');
+// function forNew(event) {
+//   if (event.target.matches('div[data-view="entry-form"]')) {
+//     tabs.className = 'hidden';
 //   } else {
-// tabs = event.target.getAttribute("div['data-view=entry-form']");
-// //     tabs.className = 'hidden';
+//     tabcontainer = '';
 //   }
+
 // }
-
-// // for (var i = 0; i < data.entries.length; i++) {
-// //   if (tabcontainer[i] === data.entries) {
-// //     tabcontainer[i].className = 'tab active';
-// //   } else {
-// //     tabcontainer[i].className = 'tab';
-// //   }
-// // }
-
-//  when new is clicked we want to hide entries
-// to get hidden to show we would eed to remove hidden from it
-
-// we want entry form to show
-
-// if we want form to show we need to remove hidden class from it
+// newBtn.addEventListener('click', forNew);
