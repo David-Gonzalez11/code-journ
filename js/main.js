@@ -24,6 +24,9 @@ function handleSubmit(event) {
   data.entries.unshift(Entry);
   img.setAttribute('src', 'images/placeholder-image-square.jpg');
   save.reset();
+  /// ////////////////////////////hreromfmmm
+  tabcontainer.classList.add('hidden');
+  tabs.className = ('');
 }
 save.addEventListener('submit', handleSubmit);
 
@@ -79,21 +82,21 @@ var tabs = document.querySelector('div[data-view="entries"]');
 var entryForm = document.querySelector('div[data-view="entry-form"]');
 
 // var tabs = document.querySelector("div[data-view='entries']");
-function handleClick(event) {
-  event.preventDefault();
-  // console.log(event.target);
-  // console.log(tabs);
+// function handleClick(event) {
+//   event.preventDefault();
+//   // console.log(event.target);
+//   // console.log(tabs);
 
-  // clicking save btn
-  if (event.target.matches('form')) {
-    tabs.classList.remove('hidden');
-  } else {
-    tabcontainer.classList.add('hidden');
-  }
-}
-// this function above works//
-// this function above is for the save buton which takes you to entries
-tabcontainer.addEventListener('click', event => handleClick(event));
+//   // clicking save btn
+//   if (event.target.matches('form')) {
+//     tabs.classList.remove('hidden');
+//   } else {
+//     tabcontainer.classList.add('hidden');
+//   }
+// }
+// // this function above works//
+// // this function above is for the save buton which takes you to entries
+// tabcontainer.addEventListener('click', event => handleClick(event));
 
 // clicking new btn
 function entries(event) {
@@ -111,6 +114,7 @@ function entryButton(event) {
     tabcontainer.classList.add('hidden');
   } else {
     entrada.className = '';
+
   }
 }
 var entrada = document.querySelector('.nav');
