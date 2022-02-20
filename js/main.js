@@ -107,10 +107,10 @@ function entries(event) {
 tabs.addEventListener('click', event => entries(event));
 
 function entryButton(event) {
-  if (event.target.matches('nav')) {
-    tabcontainer.classList.add('.hidden');
+  if (event.target.matches('#entries')) {
+    tabcontainer.classList.add('hidden');
   } else {
-    entrada = '';
+    entrada.className = '';
   }
 }
 var entrada = document.querySelector('.nav');
