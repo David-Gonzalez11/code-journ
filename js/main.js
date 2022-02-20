@@ -6,10 +6,12 @@ function handleInput(event) {
 }
 var img = document.querySelector('img');
 var input = document.querySelector('#photoUrl');
+
 input.addEventListener('input', handleInput);
 
 var save = document.querySelector('form');
-// console.log(save);
+var tabs = document.querySelector("div[data-view='entries']");
+
 function handleSubmit(event) {
   event.preventDefault();
   var title = save.elements.title.value;
@@ -28,7 +30,6 @@ function handleSubmit(event) {
 
   tabcontainer.classList.add('hidden');
   tabs.className = ('');
-  // var tabs = document.querySelector("div[data-view='entries']");
   // function handleClick(event) {
   //   event.preventDefault();
   //   // console.log(event.target);
@@ -91,7 +92,6 @@ for (var i = 0; i < data.entries.length; i++) {
 var tabcontainer = document.querySelector('form');
 
 // entries
-var tabs = document.querySelector('div[data-view="entries"]');
 
 // entry form
 var entryForm = document.querySelector('div[data-view="entry-form"]');
