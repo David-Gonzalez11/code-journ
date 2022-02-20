@@ -10,7 +10,7 @@ var input = document.querySelector('#photoUrl');
 input.addEventListener('input', handleInput);
 
 var save = document.querySelector('form');
-var tabs = document.querySelector("div[data-view='entries']");
+var $entriesView = document.querySelector("div[data-view='entries']");
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -28,8 +28,8 @@ function handleSubmit(event) {
   img.setAttribute('src', 'images/placeholder-image-square.jpg');
   save.reset();
 
-  tabcontainer.classList.add('hidden');
-  tabs.className = ('');
+  $entryForm.classList.add('hidden');
+  $entriesView.className = ('');
 }
 save.addEventListener('submit', handleSubmit);
 
@@ -64,36 +64,37 @@ function renderEntry(entry) {
   return list;
 }
 
-window.addEventListener('DOMcontentLoaded', renderEntry);
-var row = document.querySelector('.new');
+window.addEventListener('DOMcontentLoaded', function (event) {
+  var $entriesList = document.querySelector('.new');
 
-for (var i = 0; i < data.entries.length; i++) {
-  var entry = renderEntry(data.entries[i]);
-  row.appendChild(entry);
+  for (var i = 0; i < data.entries.length; i++) {
+    var entry = renderEntry(data.entries[i]);
+    $entriesList.appendChild(entry);
 
-}
+  }
+});
 
-var tabcontainer = document.querySelector('form');
+var $entryForm = document.querySelector('form');
 
-var entryForm = document.querySelector('div[data-view="entry-form"]');
+var $entryFormView = document.querySelector('div[data-view="entry-form"]');
 
-function entries(event) {
+function showEntries(event) {
   if (event.target.matches('div[data-view="entries"]')) {
-    entryForm.classList = '';
+    $entryFormView.classList = '';
   } else {
-    tabs.classList.add('hidden');
-    tabcontainer.classList.remove('hidden');
+    $entriesView.classList.add('hidden');
+    $entryForm.classList.remove('hidden');
   }
 }
-tabs.addEventListener('click', event => entries(event));
+$entriesView.addEventListener('click', event => showEntries(event));
 
 function entryButton(event) {
   if (event.target.matches('#entries')) {
-    tabcontainer.classList.add('hidden');
+    $entryForm.classList.add('hidden');
   } else {
-    entrada.className = '';
+    $entriesLink.className = '';
 
   }
 }
-var entrada = document.querySelector('.nav');
-entrada.addEventListener('click', entryButton);
+var $entriesLink = document.querySelector('.nav');
+$entriesLink.addEventListener('click', entryButton);
