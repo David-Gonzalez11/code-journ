@@ -12,6 +12,7 @@ var save = document.querySelector('form');
 var $entriesView = document.querySelector("div[data-view='entries']");
 
 function handleSubmit(event) {
+  event.preventDefault();
   var title = save.elements.title.value;
   var photoUrl = save.elements.photoUrl.value;
   var notes = save.elements.notes.value;
