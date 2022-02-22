@@ -1,6 +1,5 @@
 /* global data */
 /* exported data */
-
 function handleInput(event) {
   img.setAttribute('src', input.value);
 }
@@ -13,7 +12,6 @@ var save = document.querySelector('form');
 var $entriesView = document.querySelector("div[data-view='entries']");
 
 function handleSubmit(event) {
-  event.preventDefault();
   var title = save.elements.title.value;
   var photoUrl = save.elements.photoUrl.value;
   var notes = save.elements.notes.value;
@@ -27,9 +25,9 @@ function handleSubmit(event) {
   data.entries.unshift(Entry);
   img.setAttribute('src', 'images/placeholder-image-square.jpg');
   save.reset();
-
-  $entryForm.classList.add('hidden');
+  save.classList.add('hidden');
   $entriesView.className = ('');
+
 }
 save.addEventListener('submit', handleSubmit);
 
@@ -52,8 +50,8 @@ function renderEntry(entry) {
   image.setAttribute('src', entry.photo);
 
   var heading = document.createElement('h2');
-
   heading.textContent = entry.title;
+
   list.appendChild(firstDiv);
   firstDiv.appendChild(colHalfdiv);
   colHalfdiv.appendChild(image);
@@ -62,6 +60,7 @@ function renderEntry(entry) {
   secondcolHalf.appendChild(description);
 
   return list;
+
 }
 
 window.addEventListener('DOMcontentLoaded', function (event) {
@@ -70,12 +69,13 @@ window.addEventListener('DOMcontentLoaded', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
     var entry = renderEntry(data.entries[i]);
     $entriesList.appendChild(entry);
-
   }
+  // console.log('entries:', $entriesList);
+
 });
 
-var $entryForm = document.querySelector('form');
-
+// var $entryForm = document.querySelector('form');
+// console.log('new entry:', $entryForm);
 var $entryFormView = document.querySelector('div[data-view="entry-form"]');
 
 function showEntries(event) {
@@ -83,14 +83,15 @@ function showEntries(event) {
     $entryFormView.classList = '';
   } else {
     $entriesView.classList.add('hidden');
-    $entryForm.classList.remove('hidden');
+    save.classList.remove('hidden');
   }
 }
 $entriesView.addEventListener('click', event => showEntries(event));
-
+// start losteng to entries event lostenr
+// good palce to put function //
 function entryButton(event) {
   if (event.target.matches('#entries')) {
-    $entryForm.classList.add('hidden');
+    save.classList.add('hidden');
   } else {
     $entriesLink.className = '';
 
