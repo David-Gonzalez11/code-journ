@@ -117,3 +117,21 @@ li {
 div.container.new {
   margin-top: 1rem;
 }
+
+/* .parent {
+  font-size: 40px;
+  color: green;
+} */
+.pencil {
+  color: black;
+  font-size: 40px;
+}
+
+.row {
+  display: flex;
+}
+
+.n {
+  position: relative;
+  left: 20rem;
+}
