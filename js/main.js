@@ -99,11 +99,15 @@ function renderEntry(entry) {
 
   var editIcon = document.createElement('i');
   editIcon.className = 'fas fa-user-edit pencil';
+  // var newcol = document.createElement('div');
+  // newcol.setAttribute('class', 'column-half n');
 
   list.appendChild(firstDiv);
   firstDiv.appendChild(colHalfdiv);
   colHalfdiv.appendChild(image);
   firstDiv.appendChild(secondcolHalf);
+  // secondcolHalf.appendChild(newcol);
+
   secondcolHalf.appendChild(heading);
   secondcolHalf.appendChild(description);
   // secondcolHalf.appendChild(editIcon);
