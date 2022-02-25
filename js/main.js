@@ -17,19 +17,44 @@ function handleSubmit(event) {
   var photoUrl = save.elements.photoUrl.value;
   var notes = save.elements.notes.value;
 
-  // if (data.editing === null) {
+  if (data.editing === null) {
+    var Entry = {
+      title: title,
+      photo: photoUrl,
+      notes: notes,
+      id: data.nextEntryId
+    };
+
+    // when no entries at all nextEntryId is 1
+    // when new entry is created we give it id that is on dat.nextEntryID
+
+    data.nextEntryId++;
+    data.entries.unshift(Entry);
+    img.setAttribute('src', 'images/placeholder-image-square.jpg');
+    save.reset();
+    save.classList.add('hidden');
+    $entriesView.className = ('');
+  } else {
+    // get value from inputs  and replace the value in data.editing with the new input values
+    // go through data.entries to find entry with id that mactches data.editing.id
+    //
+  }
+  // just  adding new entry
+  // if not null then we want to update the new values to the data.entries
+  // after saving changes we want to set data.editing to null
+
   //   var entryInput = {
   //     title: title,
   //     photoUrl: photoUrl,
   //     notes: notes
   //   };
   // }
-  var Entry = {
-    title: title,
-    photo: photoUrl,
-    notes: notes,
-    id: data.nextEntryId
-  };
+  // var Entry = {
+  //   title: title,
+  //   photo: photoUrl,
+  //   notes: notes,
+  //   id: data.nextEntryId
+  // };
 
   // when no entries at all nextEntryId is 1
   // when new entry is created we give it id that is on dat.nextEntryID
@@ -100,25 +125,32 @@ function showEntries(event) {
 }
 // var parent = document.getElementsByClassName('.parent');
 
-function editClick(event) {
-  var toEdit = event.target.closest('li');
-  var entryId = toEdit.getAttribute('data-entry-id');
-  var entry = data.entries.find(entry => entry.id == entryId);
-  console.log('entry', entry);
-  if (event.target.tagName === 'I') {
-    $entriesView.className = 'hidden';
-    $entryFormView.className = '';
-    data.editing = entry;
-  }
+// function editClick(event) {
+//   var toEdit = event.target.closest('li');
+//   var entryId = toEdit.getAttribute('data-entry-id');
+//   var entry = data.entries.find(entry => entry.id == entryId);
+//   if (event.target.tagName === 'I') {
+//     $entriesView.className = 'hidden';
+//     $entryFormView.className = '';
+//     data.editing = entry;
+//     var title = document.querySelector('#title');
+//     var notes = document.querySelector('#notes');
+//     var photoUrl = document.querySelector('#photoUrl');
+//     // data.editing
+//     title.value = (data.editing.title);
+//     notes.value = (data.editing.notes);
+//     photoUrl.value = (data.editing.photo);
+//   }
 
-  // hide the entries list and show the entry form when the edit icon is clicked
+//   // hide the entries list and show the entry form when the edit icon is clicked
 
-}
+// }
 
 window.addEventListener('DOMContentLoaded', function (event) {
-  var $entriesList = document.querySelector('.parent');
-  $entriesList.addEventListener('click', editClick);
-  console.log('I am working:', $entriesList);
+
+  // this was .parent before i changed it to .new//
+  var $entriesList = document.querySelector('.new');
+  // $entriesList.addEventListener('click', editClick);
   for (var i = 0; i < data.entries.length; i++) {
     var entry = renderEntry(data.entries[i]);
     $entriesList.appendChild(entry);
