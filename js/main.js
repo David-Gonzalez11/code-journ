@@ -1,15 +1,9 @@
 /* global data */
 /* exported data */
+var save = document.querySelector('form');
 function handleInput(event) {
   img.setAttribute('src', input.value);
 }
-var img = document.querySelector('img');
-var input = document.querySelector('#photoUrl');
-
-input.addEventListener('input', handleInput);
-
-var save = document.querySelector('form');
-var $entriesView = document.querySelector("div[data-view='entries']");
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -64,10 +58,24 @@ function handleSubmit(event) {
   img.setAttribute('src', 'images/placeholder-image-square.jpg');
   save.reset();
   save.classList.add('hidden');
+  title = form.elements.title.value;
+  photoUrl = form.elements.photoUrl.value;
+  notes = form.elements.notes.value;
+  Entry = {
+    title: title,
+    photo: photoUrl,
+    notes: notes,
+    nextEntryId: data.nextEntryId
+  };
+  data.nextEntryId++;
+  data.entries.unshift(Entry);
+  img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  form.reset();
+
+  $entryForm.classList.add('hidden');
   $entriesView.className = ('');
 
 }
-save.addEventListener('submit', handleSubmit);
 
 function renderEntry(entry) {
   var list = document.createElement('LI');
@@ -163,13 +171,16 @@ window.addEventListener('DOMContentLoaded', function (event) {
 
 });
 
-// var $entryForm = document.querySelector('form');
+var $entryForm = document.querySelector('form');
 // console.log('new entry:', $entryForm);
 var $entryFormView = document.querySelector('div[data-view="entry-form"]');
+var $entriesView = document.querySelector("div[data-view='entries']");
 
 $entriesView.addEventListener('click', event => showEntries(event));
 // start losteng to entries event lostenr
 // good palce to put function //
+$entryForm.classList.remove('hidden');
+
 function entryButton(event) {
   if (event.target.matches('#entries')) {
     save.classList.add('hidden');
@@ -178,5 +189,27 @@ function entryButton(event) {
 
   }
 }
+
+var img = document.querySelector('img');
+var input = document.querySelector('#photoUrl');
+
+input.addEventListener('input', handleInput);
+
+var form = document.querySelector('form');
+
+form.addEventListener('submit', handleSubmit);
+window.addEventListener('DOMContentLoaded', function (event) {
+  var $entriesList = document.querySelector('.new');
+  for (var i = 0; i < data.entries.length; i++) {
+    var entry = renderEntry(data.entries[i]);
+    $entriesList.appendChild(entry);
+  }
+});
+
+$entryForm = document.querySelector('form');
+$entryFormView = document.querySelector('div[data-view="entry-form"]');
+
+$entriesView.addEventListener('click', event => showEntries(event));
+
 var $entriesLink = document.querySelector('.nav');
 $entriesLink.addEventListener('click', entryButton);
