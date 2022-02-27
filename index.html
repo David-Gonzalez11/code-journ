@@ -29,145 +29,72 @@
       </div>
     </div>
 
-    <main>
-      <form>
-        <div data-view="entry-form" class="container container-form" id="new">
-          <h1>New Entry</h1>
+    <div class="container">
+      <div class="row">
+        <main>
+          <form>
+            <div data-view="entry-form" class="container container-form" id="new">
+              <h1>New Entry</h1>
 
-          <div class="row">
-            <div class="column-half img">
-              <img src="images/placeholder-image-square.jpg" />
-            </div>
-
-            <div class="column-half">
-              <label for="title" class="titles">Title</label>
-              <input
-              id="title"
-                  type="text"
-                  class="column-full box"
-                  name="title"
-                />
-
-              <label for="photoUrl" class="titles">Photo URL</label>
-              <input
-                  id="photoUrl"
-                  type="text"
-                  class="column-full box"
-                  name="photoUrl"
-                />
-            </div>
-          </div>
-          <div class="column-full">
-            <label for="notes" class="titles">Notes</label>
-            <textarea
-            id="notes"
-              class="column-full textbox"
-              name="notes"
-            ></textarea>
-          </div>
-          <div class="column-full btn ">
-            <button type="submit" class="save">SAVE</button>
-          </div>
-        </div>
-
-      </form>
-
-      <div data-view="entries" class="none">
-
-
-        <div class="container new">
-          <div class="row">
-            <div class="column-half">
-              <h1>Entries</h1>
-            </div>
-            <div class="column-half">
-              <!-- anchore tag for the new button-->
-              <a class="newbtn" href="#">NEW</a>
-            </div>
-          </div>
-        </div>
-        <ul class="parent"> </ul>
-        <!-- dummy text starts here -->
-        <!-- <div data-view="entries">
-        <div class="container new">
-          <div class="row">
-            <div class="column-half">
-              <h1>Entries</h1>
-            </div>
-            <div class="column-half">
-              <button class="newbtn">NEW</button>
-            </div>
-          </div>
-          <ul>
-            <li>
               <div class="row">
-                <div class="column-half">
+                <div class="column-half img">
                   <img src="images/placeholder-image-square.jpg" />
                 </div>
 
                 <div class="column-half">
-                <div class="column-half n">
-                    <i class="fas fa-user-edit"></i>
+                  <label for="title" class="titles">Title</label>
+                  <input
+                  id="title"
+                      type="text"
+                      class="column-full box"
+                      name="title"
+                    />
 
-                  </div>
-
-                  <h2>Lorem</h2>
-
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Omnis odit sed esse eaque blanditiis ex, animi quas
-                    temporibus minima, natus dolores? Minima inventore modi
-                    cupiditate veritatis velit facilis repellendus consequatur?
-                  </p>
-
+                  <label for="photoUrl" class="titles">Photo URL</label>
+                  <input
+                      id="photoUrl"
+                      type="text"
+                      class="column-full box"
+                      name="photoUrl"
+                    />
                 </div>
-
               </div>
-            </li>
+              <div class="column-full">
+                <label for="notes" class="titles">Notes</label>
+                <textarea
+                id="notes"
+                  class="column-full textbox"
+                  name="notes"
+                ></textarea>
+                <input type="hidden" id="existingEntryId" />
+              </div>
+              <div class="column-full btn ">
+                <button type="submit" class="save">SAVE</button>
+              </div>
+            </div>
+
+          </form>
+
+          <div data-view="entries" class="none">
 
 
-
-
-
-
-
-            <li>
+            <div class="container new">
               <div class="row">
                 <div class="column-half">
-                  <img src="images/placeholder-image-square.jpg" />
+                  <h1>Entries</h1>
                 </div>
                 <div class="column-half">
-                  <h2>Ipsum</h2>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Odio voluptate, saepe sapiente vitae ut unde suscipit fuga
-                    molestias cupiditate impedit, error qui! Odit nulla
-                    consectetur ipsa placeat maiores vero exercitationem!
-                  </p>
+                  <!-- anchore tag for the new button-->
+                  <a class="newbtn" href="#">NEW</a>
                 </div>
               </div>
-            </li>
-          </ul>
-        </div>
+            </div>
+            <ul class="parent" />
+
+          </div>
+        </main>
       </div>
-
-
-
-
-
-
-
-
- -->
-
-
-
-
-
-
-
-      </div>
-    </main>
+    </div>
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
   </body>

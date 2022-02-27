@@ -14,6 +14,10 @@
   border-color: grey;
 }
 
+.column-half {
+  position: relative;
+}
+
 img {
   width: 100%;
 }
@@ -134,4 +138,10 @@ div.container.new {
 .n {
   position: relative;
   left: 20rem;
+}
+
+.edit-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
