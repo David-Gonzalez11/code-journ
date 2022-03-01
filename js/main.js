@@ -28,21 +28,25 @@ function handleSubmit(event) {
     // render the newly created entry
     renderEntry(Entry);
   } else {
-    var existingEntryId = $entryForm.elements.existingEntryId.value;
-    var existingTitle = $entryForm.elements.title.value;
-    var existingPhotoUrl = $entryForm.elements.photoUrl.value;
-    var existingNotes = $entryForm.elements.notes.value;
-    var existingEntry = {
-      title: existingTitle,
-      photo: existingPhotoUrl,
-      notes: existingNotes,
-      id: existingEntryId
+    var updatedEntryId = $entryForm.elements.existingEntryId.value;
+    var updatedTitle = $entryForm.elements.title.value;
+    var updatedPhotoUrl = $entryForm.elements.photoUrl.value;
+    var updatedNotes = $entryForm.elements.notes.value;
+    var updatedEntry = {
+      title: updatedTitle,
+      photo: updatedPhotoUrl,
+      notes: updatedNotes,
+      id: updatedEntryId
     };
-    // console.log('existingEntryId', existingEntryId);
-    var indexToUpdate = data.entries.findIndex(entry => (Number(entry.id) === Number(existingEntryId)));
-    data.entries[indexToUpdate] = existingEntry;
+    // console.log('existingEntryId', updatedEntryId);
+    // console.log('title', existingTitle);
+    // console.log('photo', existingPhotoUrl);
+    console.log(updatedEntry);
+    var indexToUpdate = data.entries.findIndex(entry => (Number(entry.id) === Number(updatedEntryId)));
+    console.log('index to update:', indexToUpdate);
+    data.entries[indexToUpdate] = updatedEntry;
     data.editing = null;
-    replaceExisitngEntry(existingEntry);
+    replaceExisitngEntry(updatedEntry);
   }
   $entryForm.reset();
   $entryForm.classList.add('hidden');
@@ -51,59 +55,20 @@ function handleSubmit(event) {
 }
 function replaceExisitngEntry(entry) {
   // grab eexisting element with entry id
-
+  var updatedNode = renderEntry(entry);
   var entryAttribute = '[data-entry-id="' + entry.id + '"]';
   // console.log('attr', entryAttribute);
   // console.log(document.querySelector(entryAttribute));
   var oldListItem = document.querySelector(entryAttribute);
+  console.log('oldListItem:', oldListItem);
+  oldListItem.replaceWith(updatedNode);
   // try adding existing child to the list
   // instead of append try and replace
 
-  var list = document.createElement('li');
-
-  var firstDiv = document.createElement('div');
-  firstDiv.setAttribute('class', 'row');
-
-  var colHalfdiv = document.createElement('div');
-  colHalfdiv.setAttribute('class', 'column-half');
-
-  var secondcolHalf = document.createElement('div');
-  secondcolHalf.setAttribute('class', 'column-half');
-
-  // var newdiv = document.createElement('div');
-  // newdiv.setAttribute('class', 'row')
-
-  var description = document.createElement('p');
-  description.textContent = entry.notes;
-
-  var image = document.createElement('img');
-  image.setAttribute('src', entry.photo);
-
-  var heading = document.createElement('h2');
-  heading.textContent = entry.title;
-
-  var button = document.createElement('button');
-  button.setAttribute('type', 'button');
-  button.className = 'edit-btn';
-
-  var editIcon = document.createElement('i');
-  editIcon.className = 'fas fa-user-edit pencil';
-  // var newcol = document.createElement('div');
-  // newcol.setAttribute('class', 'column-half n');
-
-  list.appendChild(firstDiv);
-  firstDiv.appendChild(colHalfdiv);
-  colHalfdiv.appendChild(image);
-  firstDiv.appendChild(secondcolHalf);
-  // secondcolHalf.appendChild(newcol);
-
-  secondcolHalf.appendChild(heading);
-  secondcolHalf.appendChild(description);
-  // secondcolHalf.appendChild(editIcon);
-  secondcolHalf.appendChild(button);
-  button.appendChild(editIcon);
   // console.log('list:', list);
   // replace old list item with new list item built above
+
+  // proably going to use replaceWith()
 
 }
 
@@ -211,8 +176,6 @@ var $entryFormView = document.querySelector('div[data-view="entry-form"]');
 var $entriesView = document.querySelector("div[data-view='entries']");
 
 $entriesView.addEventListener('click', event => showEntries(event));
-// start losteng to entries event lostenr
-// good palce to put function //
 $entryForm.classList.remove('hidden');
 
 function entryButton(event) {
