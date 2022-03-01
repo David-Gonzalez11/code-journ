@@ -41,9 +41,7 @@ function handleSubmit(event) {
     // console.log('existingEntryId', updatedEntryId);
     // console.log('title', existingTitle);
     // console.log('photo', existingPhotoUrl);
-    console.log(updatedEntry);
     var indexToUpdate = data.entries.findIndex(entry => (Number(entry.id) === Number(updatedEntryId)));
-    console.log('index to update:', indexToUpdate);
     data.entries[indexToUpdate] = updatedEntry;
     data.editing = null;
     replaceExisitngEntry(updatedEntry);
@@ -60,7 +58,6 @@ function replaceExisitngEntry(entry) {
   // console.log('attr', entryAttribute);
   // console.log(document.querySelector(entryAttribute));
   var oldListItem = document.querySelector(entryAttribute);
-  console.log('oldListItem:', oldListItem);
   oldListItem.replaceWith(updatedNode);
   // try adding existing child to the list
   // instead of append try and replace
@@ -99,10 +96,10 @@ function renderEntry(entry) {
 
   var button = document.createElement('button');
   button.setAttribute('type', 'button');
-  button.className = 'editBtn';
+  button.className = 'edit-btn';
 
   var editIcon = document.createElement('i');
-  editIcon.className = 'fas fa-user-edit pencil';
+  editIcon.className = 'fas fa-pencil-alt';
   // var newcol = document.createElement('div');
   // newcol.setAttribute('class', 'column-half n');
 
