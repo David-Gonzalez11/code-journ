@@ -19,13 +19,9 @@ function handleSubmit(event) {
       id: data.nextEntryId
     };
 
-    // when no entries at all nextEntryId is 1
-    // when new entry is created we give it id that is on dat.nextEntryID
-
     data.nextEntryId++;
     data.entries.unshift(Entry);
     img.setAttribute('src', 'images/placeholder-image-square.jpg');
-    // render the newly created entry
     renderEntry(Entry);
   } else {
     var updatedEntryId = $entryForm.elements.existingEntryId.value;
@@ -38,9 +34,6 @@ function handleSubmit(event) {
       notes: updatedNotes,
       id: updatedEntryId
     };
-    // console.log('existingEntryId', updatedEntryId);
-    // console.log('title', existingTitle);
-    // console.log('photo', existingPhotoUrl);
     var indexToUpdate = data.entries.findIndex(entry => (Number(entry.id) === Number(updatedEntryId)));
     data.entries[indexToUpdate] = updatedEntry;
     data.editing = null;
@@ -52,20 +45,10 @@ function handleSubmit(event) {
 
 }
 function replaceExisitngEntry(entry) {
-  // grab eexisting element with entry id
   var updatedNode = renderEntry(entry);
   var entryAttribute = '[data-entry-id="' + entry.id + '"]';
-  // console.log('attr', entryAttribute);
-  // console.log(document.querySelector(entryAttribute));
   var oldListItem = document.querySelector(entryAttribute);
   oldListItem.replaceWith(updatedNode);
-  // try adding existing child to the list
-  // instead of append try and replace
-
-  // console.log('list:', list);
-  // replace old list item with new list item built above
-
-  // proably going to use replaceWith()
 
 }
 
@@ -82,9 +65,6 @@ function renderEntry(entry) {
   var secondcolHalf = document.createElement('div');
   secondcolHalf.setAttribute('class', 'column-half');
 
-  // var newdiv = document.createElement('div');
-  // newdiv.setAttribute('class', 'row')
-
   var description = document.createElement('p');
   description.textContent = entry.notes;
 
@@ -100,26 +80,20 @@ function renderEntry(entry) {
 
   var editIcon = document.createElement('i');
   editIcon.className = 'fas fa-pencil-alt';
-  // var newcol = document.createElement('div');
-  // newcol.setAttribute('class', 'column-half n');
 
   list.appendChild(firstDiv);
   firstDiv.appendChild(colHalfdiv);
   colHalfdiv.appendChild(image);
   firstDiv.appendChild(secondcolHalf);
-  // secondcolHalf.appendChild(newcol);
 
   secondcolHalf.appendChild(heading);
   secondcolHalf.appendChild(description);
-  // secondcolHalf.appendChild(editIcon);
   secondcolHalf.appendChild(button);
   button.appendChild(editIcon);
-  // console.log('list:', list);
   return list;
 
 }
 
-// my chunk of code to listen for clicks on parent element//
 function showEntries(event) {
   if (event.target.matches('div[data-view="entries"]')) {
     $entryFormView.classList = '';
@@ -128,13 +102,11 @@ function showEntries(event) {
     $entryForm.classList.remove('hidden');
   }
 }
-// var parent = document.getElementsByClassName('.parent');
 
 function editClick(event) {
   var toEdit = event.target.closest('li');
   var entryId = toEdit.getAttribute('data-entry-id');
   var entry = data.entries.find(entry => entry.id == entryId);
-  // console.log('entry', entry);
   if (event.target.tagName === 'I') {
     $entriesView.className = 'hidden';
     $entryFormView.className = '';
@@ -150,13 +122,10 @@ function editClick(event) {
     existingEntryId.value = (entryId);
   }
 
-  // hide the entries list and show the entry form when the edit icon is clicked
-
 }
 
 window.addEventListener('DOMContentLoaded', function (event) {
 
-  // this was .parent before i changed it to .new//
   var $entriesList = document.querySelector('.parent');
   $entriesList.addEventListener('click', editClick);
   for (var i = 0; i < data.entries.length; i++) {
