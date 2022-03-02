@@ -93,12 +93,11 @@ body {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 1rem;
-  padding-right: 1rem;
-  text-align: right;
-  justify-content: right;
+  padding-right: 1.5rem;
   text-decoration: none;
   margin-right: 0;
-  float: right;
+
+  /* float: right; */
   margin-bottom: 2rem;
 }
 
@@ -120,12 +119,9 @@ li {
 
 div.container.new {
   margin-top: 1rem;
+  width: 97%;
 }
 
-/* .parent {
-  font-size: 40px;
-  color: green;
-} */
 .fas {
   color: black;
   font-size: 30px;
@@ -135,15 +131,16 @@ div.container.new {
   display: flex;
 }
 
-.n {
-  position: relative;
-  left: 20rem;
-}
-
 .edit-btn {
   float: right;
   position: relative;
   bottom: 5rem;
   border: none;
   right: 1rem;
+}
+
+.right {
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
 }

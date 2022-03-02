@@ -53,6 +53,7 @@ function replaceExisitngEntry(entry) {
 }
 
 function renderEntry(entry) {
+
   var list = document.createElement('li');
   list.setAttribute('data-entry-id', entry.id);
 
@@ -110,6 +111,9 @@ function editClick(event) {
   if (event.target.tagName === 'I') {
     $entriesView.className = 'hidden';
     $entryFormView.className = '';
+    var news = document.querySelector('#newEntryChange');
+    news.textContent = 'Edit Entry';
+
     data.editing = entry;
     var title = document.querySelector('#title');
     var notes = document.querySelector('#notes');
@@ -135,7 +139,6 @@ window.addEventListener('DOMContentLoaded', function (event) {
       $entriesList.appendChild(entry);
     }
   }
-
 });
 
 var $entryFormView = document.querySelector('div[data-view="entry-form"]');
