@@ -90,14 +90,12 @@ body {
   color: white;
   background-color: rgb(95, 58, 138);
   border-radius: 5px;
-  padding-top: 0.5rem;
-  padding-bottom: 0.4rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.5rem;
   padding-left: 1.2rem;
   padding-right: 1.2rem;
   text-decoration: none;
   margin-right: 0;
-
-  /* float: right; */
   margin-bottom: 2rem;
 }
 
@@ -123,7 +121,7 @@ div.container.new {
 }
 
 .fas {
-  color: black;
+  color: rgb(86 43 129);
   font-size: 30px;
 }
 

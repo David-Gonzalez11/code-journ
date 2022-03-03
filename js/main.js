@@ -80,7 +80,7 @@ function renderEntry(entry) {
   button.className = 'edit-btn';
 
   var editIcon = document.createElement('i');
-  editIcon.className = 'fas fa-pencil-alt';
+  editIcon.className = 'fas fa-pen';
 
   list.appendChild(firstDiv);
   firstDiv.appendChild(colHalfdiv);
