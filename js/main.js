@@ -2,15 +2,16 @@
 /* exported data */
 var $entryForm = document.querySelector('form');
 function handleInput(event) {
+
   img.setAttribute('src', input.value);
 }
 
 function handleSubmit(event) {
+
   event.preventDefault();
   var title = $entryForm.elements.title.value;
   var photoUrl = $entryForm.elements.photoUrl.value;
   var notes = $entryForm.elements.notes.value;
-
   if (data.editing === null) {
     var Entry = {
       title: title,
@@ -48,8 +49,9 @@ function replaceExisitngEntry(entry) {
   var updatedNode = renderEntry(entry);
   var entryAttribute = '[data-entry-id="' + entry.id + '"]';
   var oldListItem = document.querySelector(entryAttribute);
-  oldListItem.replaceWith(updatedNode);
+  console.log(oldListItem);
 
+  oldListItem.replaceWith(updatedNode);
 }
 
 function renderEntry(entry) {
@@ -86,20 +88,23 @@ function renderEntry(entry) {
   firstDiv.appendChild(colHalfdiv);
   colHalfdiv.appendChild(image);
   firstDiv.appendChild(secondcolHalf);
-
   secondcolHalf.appendChild(heading);
   secondcolHalf.appendChild(description);
   secondcolHalf.appendChild(button);
   button.appendChild(editIcon);
+  var ul = document.querySelector('ul');
+  ul.prepend(list);
   return list;
 
 }
 
 function showEntries(event) {
+
+  // this is where error is happening when clicking entries button from new page
+
   if (event.target.matches('div[data-view="entries"]')) {
     $entryFormView.classList = '';
   } else {
-    $entriesView.classList.add('hidden');
     $entryForm.classList.remove('hidden');
   }
 }
@@ -107,7 +112,7 @@ function showEntries(event) {
 function editClick(event) {
   var toEdit = event.target.closest('li');
   var entryId = toEdit.getAttribute('data-entry-id');
-  var entry = data.entries.find(entry => entry.id == entryId);
+  var entry = data.entries.find(entry => entry.id === Number(entryId));
   if (event.target.tagName === 'I') {
     $entriesView.className = 'hidden';
     $entryFormView.className = '';
@@ -123,13 +128,14 @@ function editClick(event) {
     title.value = (data.editing.title);
     notes.value = (data.editing.notes);
     photoUrl.value = (data.editing.photo);
+    img.setAttribute('src', photoUrl.value);
+    // photoUrl.setAttribute('src');
     existingEntryId.value = (entryId);
   }
 
 }
 
 window.addEventListener('DOMContentLoaded', function (event) {
-
   var $entriesList = document.querySelector('.parent');
   $entriesList.addEventListener('click', editClick);
   for (var i = 0; i < data.entries.length; i++) {
@@ -140,6 +146,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
     }
   }
 });
+// document.querySelector("[data-view='entries']").classList.add('hidden');
 
 var $entryFormView = document.querySelector('div[data-view="entry-form"]');
 var $entriesView = document.querySelector("div[data-view='entries']");
@@ -152,7 +159,6 @@ function entryButton(event) {
     $entryForm.classList.add('hidden');
   } else {
     $entriesLink.className = '';
-
   }
 }
 
