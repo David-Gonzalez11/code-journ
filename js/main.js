@@ -49,7 +49,6 @@ function replaceExisitngEntry(entry) {
   var updatedNode = renderEntry(entry);
   var entryAttribute = '[data-entry-id="' + entry.id + '"]';
   var oldListItem = document.querySelector(entryAttribute);
-  console.log(oldListItem);
 
   oldListItem.replaceWith(updatedNode);
 }
@@ -104,10 +103,14 @@ function showEntries(event) {
 
   if (event.target.matches('div[data-view="entries"]')) {
     $entryFormView.classList = '';
+
   } else {
     $entryForm.classList.remove('hidden');
+    $entriesView.classList.add('hidden');
+
   }
 }
+// document.querySelector('.newbtn').addEventListener('click', showEntries);
 
 function editClick(event) {
   var toEdit = event.target.closest('li');
@@ -157,6 +160,7 @@ $entryForm.classList.remove('hidden');
 function entryButton(event) {
   if (event.target.matches('#entries')) {
     $entryForm.classList.add('hidden');
+    $entriesView.classList.remove('hidden');
   } else {
     $entriesLink.className = '';
   }
