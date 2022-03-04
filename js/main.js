@@ -46,6 +46,8 @@ function handleSubmit(event) {
 
 }
 function replaceExisitngEntry(entry) {
+  event.preventDefault();
+
   var updatedNode = renderEntry(entry);
   var entryAttribute = '[data-entry-id="' + entry.id + '"]';
   var oldListItem = document.querySelector(entryAttribute);
@@ -98,19 +100,16 @@ function renderEntry(entry) {
 }
 
 function showEntries(event) {
-
-  // this is where error is happening when clicking entries button from new page
-
   if (event.target.matches('div[data-view="entries"]')) {
     $entryFormView.classList = '';
-
   } else {
     $entryForm.classList.remove('hidden');
     $entriesView.classList.add('hidden');
+    // data.view = 'entries'; // check this //
+    data.view = 'entries';
 
   }
 }
-// document.querySelector('.newbtn').addEventListener('click', showEntries);
 
 function editClick(event) {
   var toEdit = event.target.closest('li');
@@ -137,7 +136,57 @@ function editClick(event) {
   }
 
 }
+// working withing my refrsh page function//
+/*
+check to see what view the user is on previously  by the data-view attribute when the page loads
+if the user is on the entries view then hide the form view and show the entries
+set the variable for entries to en empty string and set the form variable class to hidden
 
+if the user is on the entry view then hide the entries view and show the form view
+set the entries variable class to hidden
+set the entry form variable to an empty string
+
+*/
+// function viewEntries() {
+
+//   console.log(data.view);
+//   data.view = 'entries';
+//   if (data.view === 'div[data-view="entries"]') {
+//     $entriesView.className = '';
+//     $entryFormView.className = 'hidden';
+//   }
+// }
+
+// function viewForm() {
+//   data.view = 'entry-form';
+//   if (data.view === 'div[data-view="entry-form"]') {
+//     $entriesView.className = 'hidden';
+//     $entryFormView.classsName = '';
+//   }
+// }
+
+// function refreshpage(event) {
+
+//   if (data.view === 'entries' || data.editing !== null) {
+//     viewEntries();
+//   } else {
+//     viewForm();
+//   }
+//   if (event.target.matches(data.view === ('div[data-view="entry-form"]'))) {
+
+//     $entryFormView.className = '';
+//     $entriesView.className = 'hidden';
+//     data.view = 'entry-form';
+
+//   } else if (event.target.matches(data.view === ('div[data-view="entries"]'))) {
+//     $entriesView.classList.add('');
+//     $entryFormView.className = 'hidden';
+//     data.view = 'entries';
+//   }
+// }
+// document.addEventListener('click', refreshpage);
+
+// working withinf my refresh oage function//
 window.addEventListener('DOMContentLoaded', function (event) {
   var $entriesList = document.querySelector('.parent');
   $entriesList.addEventListener('click', editClick);
@@ -149,7 +198,6 @@ window.addEventListener('DOMContentLoaded', function (event) {
     }
   }
 });
-// document.querySelector("[data-view='entries']").classList.add('hidden');
 
 var $entryFormView = document.querySelector('div[data-view="entry-form"]');
 var $entriesView = document.querySelector("div[data-view='entries']");
@@ -158,6 +206,7 @@ $entriesView.addEventListener('click', event => showEntries(event));
 $entryForm.classList.remove('hidden');
 
 function entryButton(event) {
+  // check this idk if its correct//
   if (event.target.matches('#entries')) {
     $entryForm.classList.add('hidden');
     $entriesView.classList.remove('hidden');
