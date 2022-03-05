@@ -147,44 +147,20 @@ set the entries variable class to hidden
 set the entry form variable to an empty string
 
 */
-// function viewEntries() {
 
-//   console.log(data.view);
-//   data.view = 'entries';
-//   if (data.view === 'div[data-view="entries"]') {
-//     $entriesView.className = '';
-//     $entryFormView.className = 'hidden';
-//   }
-// }
+function viewEntries() {
+  if (data.view === 'entry-form') {
+    $entriesView.className = 'hidden';
+    $entryFormView.classsName = '';
 
-// function viewForm() {
-//   data.view = 'entry-form';
-//   if (data.view === 'div[data-view="entry-form"]') {
-//     $entriesView.className = 'hidden';
-//     $entryFormView.classsName = '';
-//   }
-// }
+  } else {
+    data.view = 'entries';
+    $entriesView.className = '';
+    $entryFormView.className = 'hidden';
+  }
+}
 
-// function refreshpage(event) {
-
-//   if (data.view === 'entries' || data.editing !== null) {
-//     viewEntries();
-//   } else {
-//     viewForm();
-//   }
-//   if (event.target.matches(data.view === ('div[data-view="entry-form"]'))) {
-
-//     $entryFormView.className = '';
-//     $entriesView.className = 'hidden';
-//     data.view = 'entry-form';
-
-//   } else if (event.target.matches(data.view === ('div[data-view="entries"]'))) {
-//     $entriesView.classList.add('');
-//     $entryFormView.className = 'hidden';
-//     data.view = 'entries';
-//   }
-// }
-// document.addEventListener('click', refreshpage);
+window.addEventListener('DOMContentLoaded', viewEntries);
 
 // working withinf my refresh oage function//
 window.addEventListener('DOMContentLoaded', function (event) {
