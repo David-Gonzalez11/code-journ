@@ -147,8 +147,11 @@ set the entries variable class to hidden
 set the entry form variable to an empty string
 
 */
+var $newBtn = document.querySelector('.newbtn');
+$newBtn.addEventListener('click', viewEntries);
 
 function viewEntries() {
+  data.view = 'entry-form';
   if (data.view === 'entry-form') {
     $entriesView.className = 'hidden';
     $entryFormView.classsName = '';
@@ -158,8 +161,8 @@ function viewEntries() {
     $entriesView.className = '';
     $entryFormView.className = 'hidden';
   }
-}
 
+}
 window.addEventListener('DOMContentLoaded', viewEntries);
 
 // working withinf my refresh oage function//
@@ -185,7 +188,7 @@ function entryButton(event) {
   // check this idk if its correct//
   if (event.target.matches('#entries')) {
     $entryForm.classList.add('hidden');
-    $entriesView.classList.remove('hidden');
+    $entriesView.className = '';
   } else {
     $entriesLink.className = '';
   }
