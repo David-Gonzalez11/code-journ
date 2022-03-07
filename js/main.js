@@ -114,7 +114,7 @@ function showEntries(event) {
 function editClick(event) {
   var toEdit = event.target.closest('li');
   var entryId = toEdit.getAttribute('data-entry-id');
-  var entry = data.entries.find(entry => entry.id === Number(entryId));
+  var entry = data.entries.find(entry => entry.id == (entryId));
   if (event.target.tagName === 'I') {
     $entriesView.className = 'hidden';
     $entryFormView.className = '';
@@ -126,27 +126,15 @@ function editClick(event) {
     var notes = document.querySelector('#notes');
     var photoUrl = document.querySelector('#photoUrl');
     var existingEntryId = document.querySelector('#existingEntryId');
-    // data.editing
     title.value = (data.editing.title);
     notes.value = (data.editing.notes);
     photoUrl.value = (data.editing.photo);
     img.setAttribute('src', photoUrl.value);
-    // photoUrl.setAttribute('src');
     existingEntryId.value = (entryId);
   }
 
 }
-// working withing my refrsh page function//
-/*
-check to see what view the user is on previously  by the data-view attribute when the page loads
-if the user is on the entries view then hide the form view and show the entries
-set the variable for entries to en empty string and set the form variable class to hidden
 
-if the user is on the entry view then hide the entries view and show the form view
-set the entries variable class to hidden
-set the entry form variable to an empty string
-
-*/
 var $newBtn = document.querySelector('.newbtn');
 $newBtn.addEventListener('click', viewEntries);
 
