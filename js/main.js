@@ -104,6 +104,7 @@ function editClick(event) {
   var toEdit = event.target.closest('li');
   var entryId = toEdit.getAttribute('data-entry-id');
   var entry = data.entries.find(entry => entry.id == (entryId));
+
   if (event.target.tagName === 'I') {
     $entriesView.className = 'hidden';
     $entryFormView.className = '';
@@ -119,9 +120,10 @@ function editClick(event) {
     photoUrl.value = (data.editing.photo);
     img.setAttribute('src', photoUrl.value);
     existingEntryId.value = (entryId);
-  }
-}
 
+  }
+
+}
 var $newBtn = document.querySelector('.newbtn');
 $newBtn.addEventListener('click', viewEntries);
 
@@ -129,6 +131,10 @@ function viewEntries() {
   data.view = 'entry-form';
   $entriesView.className = 'hidden';
   $entryFormView.classList.remove('hidden');
+  document.getElementById('newEntryChange').textContent = 'New Entry';
+  img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $entryForm.reset();
+
 }
 
 window.addEventListener('DOMContentLoaded', function (event) {
@@ -141,23 +147,25 @@ window.addEventListener('DOMContentLoaded', function (event) {
     }
   }
 });
-
 var $entryFormView = document.querySelector('div[data-view="entry-form"]');
 var $entriesView = document.querySelector("div[data-view='entries']");
 
 if (data.view === 'entries') {
   $entryFormView.classList.add('hidden');
   $entriesView.classList.remove('hidden');
+
 } else {
   data.view = 'entry-form';
   $entryFormView.classList.remove('hidden');
   $entriesView.classList.add('hidden');
+
 }
 
 function handleClickedEntriesLink(event) {
   $entryFormView.classList.add('hidden');
   $entriesView.className = '';
   data.view = 'entries';
+
 }
 
 var img = document.querySelector('img');
