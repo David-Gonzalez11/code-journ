@@ -133,7 +133,7 @@ function viewEntries() {
   $entryFormView.classList.remove('hidden');
   document.getElementById('newEntryChange').textContent = 'New Entry';
   img.setAttribute('src', 'images/placeholder-image-square.jpg');
-  $entryForm.reset();
+  // $entryForm.reset();
 
 }
 
