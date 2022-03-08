@@ -41,7 +41,7 @@ function handleSubmit(event) {
     replaceExisitngEntry(updatedEntry);
   }
   $entryForm.reset();
-  $entryForm.classList.add('hidden');
+  $entryFormView.classList.add('hidden');
   $entriesView.className = ('');
 
 }
@@ -99,19 +99,8 @@ function renderEntry(entry) {
 
 }
 
-function showEntries(event) {
-  if (event.target.matches('div[data-view="entries"]')) {
-    $entryFormView.classList = '';
-  } else {
-    $entryForm.classList.remove('hidden');
-    $entriesView.classList.add('hidden');
-    // data.view = 'entries'; // check this //
-    data.view = 'entries';
-
-  }
-}
-
 function editClick(event) {
+  data.view = 'entry-form';
   var toEdit = event.target.closest('li');
   var entryId = toEdit.getAttribute('data-entry-id');
   var entry = data.entries.find(entry => entry.id == (entryId));
@@ -120,7 +109,6 @@ function editClick(event) {
     $entryFormView.className = '';
     var news = document.querySelector('#newEntryChange');
     news.textContent = 'Edit Entry';
-
     data.editing = entry;
     var title = document.querySelector('#title');
     var notes = document.querySelector('#notes');
@@ -132,7 +120,6 @@ function editClick(event) {
     img.setAttribute('src', photoUrl.value);
     existingEntryId.value = (entryId);
   }
-
 }
 
 var $newBtn = document.querySelector('.newbtn');
@@ -140,26 +127,15 @@ $newBtn.addEventListener('click', viewEntries);
 
 function viewEntries() {
   data.view = 'entry-form';
-  if (data.view === 'entry-form') {
-    $entriesView.className = 'hidden';
-    $entryFormView.classsName = '';
-
-  } else {
-    data.view = 'entries';
-    $entriesView.className = '';
-    $entryFormView.className = 'hidden';
-  }
-
+  $entriesView.className = 'hidden';
+  $entryFormView.classList.remove('hidden');
 }
-window.addEventListener('DOMContentLoaded', viewEntries);
 
-// working withinf my refresh oage function//
 window.addEventListener('DOMContentLoaded', function (event) {
   var $entriesList = document.querySelector('.parent');
   $entriesList.addEventListener('click', editClick);
   for (var i = 0; i < data.entries.length; i++) {
     if (data.entries[i] !== null) {
-
       var entry = renderEntry(data.entries[i]);
       $entriesList.appendChild(entry);
     }
@@ -169,17 +145,19 @@ window.addEventListener('DOMContentLoaded', function (event) {
 var $entryFormView = document.querySelector('div[data-view="entry-form"]');
 var $entriesView = document.querySelector("div[data-view='entries']");
 
-$entriesView.addEventListener('click', event => showEntries(event));
-$entryForm.classList.remove('hidden');
+if (data.view === 'entries') {
+  $entryFormView.classList.add('hidden');
+  $entriesView.classList.remove('hidden');
+} else {
+  data.view = 'entry-form';
+  $entryFormView.classList.remove('hidden');
+  $entriesView.classList.add('hidden');
+}
 
-function entryButton(event) {
-  // check this idk if its correct//
-  if (event.target.matches('#entries')) {
-    $entryForm.classList.add('hidden');
-    $entriesView.className = '';
-  } else {
-    $entriesLink.className = '';
-  }
+function handleClickedEntriesLink(event) {
+  $entryFormView.classList.add('hidden');
+  $entriesView.className = '';
+  data.view = 'entries';
 }
 
 var img = document.querySelector('img');
@@ -189,7 +167,5 @@ input.addEventListener('input', handleInput);
 
 $entryForm.addEventListener('submit', handleSubmit);
 
-$entriesView.addEventListener('click', event => showEntries(event));
-
-var $entriesLink = document.querySelector('.nav');
-$entriesLink.addEventListener('click', entryButton);
+var $entriesLink = document.querySelector('#entries');
+$entriesLink.addEventListener('click', handleClickedEntriesLink);
