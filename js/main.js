@@ -25,7 +25,7 @@ function handleSubmit(event) {
     img.setAttribute('src', 'images/placeholder-image-square.jpg');
     renderEntry(Entry);
   } else {
-    var updatedEntryId = $entryForm.elements.existingEntryId.value;
+    var updatedEntryId = data.editing.id;
     var updatedTitle = $entryForm.elements.title.value;
     var updatedPhotoUrl = $entryForm.elements.photoUrl.value;
     var updatedNotes = $entryForm.elements.notes.value;
@@ -133,7 +133,7 @@ function viewEntries() {
   $entryFormView.classList.remove('hidden');
   document.getElementById('newEntryChange').textContent = 'New Entry';
   img.setAttribute('src', 'images/placeholder-image-square.jpg');
-  // $entryForm.reset();
+  $entryForm.reset();
 
 }
 
